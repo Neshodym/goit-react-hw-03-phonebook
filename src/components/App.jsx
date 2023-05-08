@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'; 
 import { nanoid } from 'nanoid';
 import { Section } from 'components/Section/Section';
 import { Form } from 'components/Form/Form';
@@ -48,17 +48,17 @@ export class App extends Component {
     }));
   };
 
-  changeFilter = e => {
-    this.setState({ filter: e.target.value });
-  };
+ 
+changeFilter = ({ target: { value } }) => { this.setState({ filter: value }); }
 
-  getFilterContact = () => {
-    const { contacts, filter } = this.state;
-    const normalizedFilter = filter.toLowerCase();
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter)
-    );
-  };
+ getFilterContact = () => {
+  const { contacts, filter } = this.state;
+  const normalizedFilter = filter.toLowerCase();
+  return contacts.filter(({ name }) =>
+    name.toLowerCase().includes(normalizedFilter)
+  );
+};
+
 
   deleteContact = contactId => {
     this.setState(({ contacts }) => ({
